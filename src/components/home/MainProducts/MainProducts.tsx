@@ -6,16 +6,26 @@ import { Product, Products } from "app/interfaces/products";
 import styles from "./MainProducts.module.sass";
 
 const getProducts = async (): Promise<Product[]> => {
-  const response: Products = await fetch(
-    `${process.env.SHOPIFY_HOSTNAME}/admin/api/2023-10/products.json`,
-    {
-      headers: {
-        "X-Shopify-Access-Token": process.env.SHOPIFY_API_KEY!,
-      },
-    }
-  ).then((resp) => resp.json());
+  try {
+    const response: Products = await fetch(
+      `${process.env.SHOPIFY_HOSTNAME}/admin/api/2023-10/products.json`,
+      {
+        headers: {
+          "X-Shopify-Access-Token": process.env.SHOPIFY_API_KEY!,
+        },
+      }
+    ).then((resp) => resp.json());
 
-  return response.products;
+    return response.products;
+  } catch (error) {
+    console.log(error);
+
+    // También se puede propagar el error
+    // throw error;
+
+    // Devolver array vacio si hay error
+    return [];
+  }
 };
 
 // Se puede poner asincrono un server component

@@ -16,6 +16,9 @@ const getProducts = async (): Promise<Product[]> => {
       }
     ).then((resp) => resp.json());
 
+    // Simular error
+    // throw new Error("error");
+
     return response.products;
   } catch (error) {
     console.log(error);

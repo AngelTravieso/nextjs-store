@@ -8,12 +8,13 @@ import { getProducts } from "app/services/shopify";
 
 // Se puede poner asincrono un server component
 export const MainProducts = async () => {
-  const products = await getProducts();
+  const response = await fetch('http://localhost:3000/api');
+  const { products } = await response.json();
 
-  console.log(products);
+  // console.log(products);
 
   // Obtener valor del .env
-  console.log(process.env.NEXT_PUBLIC_SHOPIFY_HOSTNAME);
+  // console.log(process.env.NEXT_PUBLIC_SHOPIFY_HOSTNAME);
   // console.log(process.env.SHOPIFY_API_KEY);
 
   return (

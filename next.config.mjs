@@ -17,7 +17,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: ' cdn.shopify.com',
+        hostname: 'cdn.shopify.com',
         pathname: '/s/files/1/0888/5816/5540/files/*',
     },
     ]

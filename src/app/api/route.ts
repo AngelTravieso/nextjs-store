@@ -1,4 +1,4 @@
-import { getProducts } from '../../services/shopify/index';
+import { getProducts } from '../../services/shopify/products';
 
 export async function GET() {
     const products = await getProducts();

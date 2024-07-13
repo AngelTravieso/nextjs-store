@@ -1,5 +1,6 @@
 import { ProductsWrapper } from "app/components/store/ProductsWrapper";
-import { getProducts } from '../../../services/shopify/index';
+import { getProducts } from '../../../services/shopify/products';
+import { getCollections } from "app/services/shopify/collections";
 
 interface CategoryProps {
   params: {
@@ -11,7 +12,11 @@ interface CategoryProps {
 export default async function Category(props: CategoryProps) {
   // console.log(props)
 
-  const products = await getProducts()
+  // Data fetching en paralelo
+  const products = await getProducts();
+  // const collections = await getCollections();
+
+  // Data fetching secuencial es cuando una de las peticiones es bloqueante, un getByID por ejemplo
 
   const { categories } = props.params;
 

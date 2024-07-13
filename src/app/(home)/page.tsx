@@ -4,8 +4,9 @@ import { MainProducts } from "../../components/home/MainProducts/MainProducts";
 export default function Home() {
   return (
     <main>
-      <MainProducts />
-      <Footer />
+      <h1>Products</h1>
+      {/* <MainProducts /> */}
+      {/* <Footer /> */}
     </main>
   );
 }

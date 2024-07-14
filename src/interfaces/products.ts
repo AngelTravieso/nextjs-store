@@ -17,7 +17,7 @@ export interface Product {
   tags: string;
   status: Status;
   admin_graphql_api_id: string;
-  variants: Variant[];
+  variants?: Variant[];
   options: Option[];
   images: Image[];
   image: Image;
@@ -65,7 +65,7 @@ export interface Variant {
   id: number;
   product_id: number;
   title: Option1;
-  price: string;
+  price?: string;
   sku: null;
   position: number;
   inventory_policy: InventoryPolicy;

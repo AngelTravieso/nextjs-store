@@ -29,3 +29,34 @@ export const getProducts = async (id?: string): Promise<Product[]> => {
     return [];
   }
 };
+
+export const getMainProducts = async (): Promise<Product[]> => {
+  try {
+    const response = await fetch(shopifyUrls.products.mainProducts, {
+      headers: new Headers({
+        "X-Shopify-Access-Token": env.SHOPIFY_TOKEN!,
+      }),
+      // por defecto está acá, next forza la caché
+      // cache: 'force-cache'
+      // quitar caché
+      // cache: "no-cache",}
+      // revalida la cache cada 10seg, esto permite expresiones
+      next: {
+        revalidate: 10,
+      },
+    });
+
+    const { products } = await response.json();
+
+    return products;
+  } catch (error) {
+    console.log("error");
+    console.log(error);
+
+    // También se puede propagar el error
+    // throw error;
+
+    // Devolver array vacio si hay error
+    return [];
+  }
+};

@@ -4,12 +4,14 @@ import Image from "next/image";
 
 import { Product } from "app/interfaces/products";
 import styles from "./MainProducts.module.sass";
-import { getProducts } from "app/services/shopify";
+import { getMainProducts } from "app/services/shopify/products";
 
 // Se puede poner asincrono un server component
 export const MainProducts = async () => {
-  const response = await fetch("http://localhost:3000/api");
-  const { products } = await response.json();
+  // const response = await fetch("http://localhost:3000/api");
+  // const { products } = await response.json();
+
+  const products = await getMainProducts();
 
   // console.log(products);
 

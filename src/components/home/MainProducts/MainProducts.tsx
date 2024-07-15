@@ -8,7 +8,7 @@ import { getProducts } from "app/services/shopify";
 
 // Se puede poner asincrono un server component
 export const MainProducts = async () => {
-  const response = await fetch('http://localhost:3000/api');
+  const response = await fetch("http://localhost:3000/api");
   const { products } = await response.json();
 
   // console.log(products);

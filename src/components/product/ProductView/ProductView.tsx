@@ -1,13 +1,24 @@
+"use client"
+
 import Image from "next/image";
 import styles from "./ProductView.module.sass";
 import { ProductViewItemsOrder } from "./ProductViewItemOrder";
 import { Product } from "app/interfaces/products";
+import { useRouter } from "next/navigation";
 
 interface ProductViewProps {
   product: Product;
 }
 
 export const ProductView = ({ product }: ProductViewProps) => {
+
+  const router = useRouter();
+
+  // Si no hay producto lo llevo a la landing
+  if (!product) {
+    router.push('/');
+  }
+
   return (
     <main className={styles.ProductView}>
       <section className={styles.ProductView__images}>

@@ -11,7 +11,7 @@ export const ProductCard = ({ product }: ProductCardInterface) => {
     // Uso de optional chaining
     const price = product.variants?.[0]?.price ?? '';
     return (
-        <Link href={`/articulo/${product.handle}?id=${product.id}`} className={styles.ProductCard__link}>
+        <Link href={`/product/${product.handle}?id=${product.id}`} className={styles.ProductCard__link}>
             <article className={styles.ProductCard}>
                 <Image
                     src={product.image}

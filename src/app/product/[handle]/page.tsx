@@ -2,6 +2,7 @@
 
 import { ProductView } from "app/components/product/ProductView";
 import { getProducts } from "app/services/shopify/products";
+import { redirect } from "next/navigation";
 // import { useParams, useSearchParams } from "next/navigation";
 
 interface ProductPageProps {
@@ -24,7 +25,11 @@ export const ProductPage = async ({ searchParams }: ProductPageProps) => {
 
   const products = await getProducts(id);
 
-  const ss = products[0];
+
+  // Si no hay ID lo redirecciono a store
+  if (!id) {
+    redirect('/store');
+  }
 
   // console.log(params);
   // console.log(id);

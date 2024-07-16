@@ -11,6 +11,20 @@ interface ProductPageProps {
   };
 }
 
+export async function generateMetadata({ searchParams }: ProductPageProps) {
+  const id = searchParams.id;
+  const products = await getProducts(id);
+
+  return {
+    title: products[0].title,
+    description: products[0].body_html,
+    keyword: products[0].title,
+    openGraph: {
+      images: [products[0].image],
+    },
+  };
+}
+
 export const ProductPage = async ({ searchParams }: ProductPageProps) => {
   // Permite traer los parametros sin importar en que parte del componente estemos, el componente debe ser de tipo cliente, ya que es un hook
   // const params = useParams();
@@ -22,13 +36,11 @@ export const ProductPage = async ({ searchParams }: ProductPageProps) => {
   // const id = searchParams.get("id");
 
   const id = searchParams.id;
-
   const products = await getProducts(id);
-
 
   // Si no hay ID lo redirecciono a store
   if (!id) {
-    redirect('/store');
+    redirect("/store");
   }
 
   // console.log(params);

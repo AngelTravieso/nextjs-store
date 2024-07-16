@@ -42,7 +42,8 @@ export const getMainProducts = async (): Promise<Product[]> => {
       // cache: "no-cache",}
       // revalida la cache cada 10seg, esto permite expresiones
       next: {
-        revalidate: 10,
+        // revalidate: 10,
+        tags: ['main-products'],
       },
     });
 
